@@ -1,0 +1,35 @@
+﻿@* adding corresponding model for this view *@
+@model Online_Game_Store.ViewModels.RandomGameViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    @* Defining the classname's condition. If 5 or more customers then classname will be "popular" *@
+    var classname = Model.Customers.Count > 5 ? "popular" : null;
+}
+
+@* classname variable with codition is used here
+    <h2 class="@classname">@Model.Games.Name</h2> *@
+
+
+@if (Model.Customers.Count == 0)
+{
+    @* <p>No one has rented this game</p> *@
+    <text> No one has rented this game </text>
+}
+
+else
+{
+    @* Customer name is listed in <li> for each customer *@
+
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li> @customer.Name </li>
+        }
+    </ul>
+}
+
